@@ -187,12 +187,17 @@ class PyArrowImpl(BaseImpl):
                     path_or_handle,
                     compression=compression,
                     partition_cols=partition_cols,
+                    use_compliant_nested_types=True,
                     **kwargs,
                 )
             else:
                 # write to single output file
                 self.api.parquet.write_table(
-                    table, path_or_handle, compression=compression, **kwargs
+                    table,
+                    path_or_handle,
+                    compression=compression,
+                    use_compliant_nested_types=True,
+                    **kwargs,
                 )
         finally:
             if handles is not None:
